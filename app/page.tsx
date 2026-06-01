@@ -2,18 +2,18 @@ import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
 
 export default function HomePage() {
-  const posts = getAllPosts().slice(0, 3);
+  const posts = getAllPosts().slice(0, 6);
 
   return (
     <section className="hero">
-      <p className="meta">Personal writing, notes, and useful ideas.</p>
-      <h1>A clean, simple blog.</h1>
+      <p className="meta">Style advice for women over 40</p>
+      <h1>Fashion, hair and style mistakes that add years to your look.</h1>
       <p className="lede">
-        This is a lightweight blog designed for easy publishing, quick edits, and future automation.
+        Practical advice on outfits, shoes, handbags, jewellery and hairstyles that help you look more polished and current.
       </p>
-      <Link href="/blog" className="button">Read the blog</Link>
+      <Link href="/blog" className="button">Read the articles</Link>
 
-      <h2>Latest posts</h2>
+      <h2>Latest articles</h2>
       <div className="grid">
         {posts.map((post) => (
           <Link className="card" href={`/blog/${post.slug}`} key={post.slug}>
