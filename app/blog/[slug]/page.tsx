@@ -1,21 +1,27 @@
 import { notFound } from 'next/navigation';
 import { getAllPosts, getPost, renderMarkdown } from '@/lib/posts';
 
+type BlogPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = getPost(params.slug);
+export async function generateMetadata({ params }: BlogPageProps) {
+  const { slug } = await params;
+  const post = getPost(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | Basic Blog`,
+    title: `${post.title} | Over 40 Style Fix`,
     description: post.description,
   };
 }
 
-export default function PostPage({ params }: { params: { slug: string } }) {
-  const post = getPost(params.slug);
+export default async function PostPage({ params }: BlogPageProps) {
+  const { slug } = await params;
+  const post = getPost(slug);
   if (!post) notFound();
 
   return (
