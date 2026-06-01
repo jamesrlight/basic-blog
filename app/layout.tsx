@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Basic Blog',
-  description: 'A simple personal blog built with Next.js.',
+  title: 'Over 40 Style Fix',
+  description: 'Fashion, hair and style mistakes women over 40 make — and what to do instead.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -12,14 +12,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <header className="site-header">
-          <Link href="/" className="brand">Basic Blog</Link>
+          <Link href="/" className="brand">Over 40 Style Fix</Link>
           <nav>
             <Link href="/blog">Blog</Link>
             <Link href="/contact">Contact</Link>
           </nav>
         </header>
         <main>{children}</main>
-        <footer>© {new Date().getFullYear()} Basic Blog</footer>
+        <footer>© {new Date().getFullYear()} Over 40 Style Fix</footer>
       </body>
     </html>
   );
