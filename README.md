@@ -1,5 +1,40 @@
-# Over 40 Style Fix
+# Basic Blog
 
-A Next.js blog focused on fashion, hair, outfit, handbag, shoe, and jewellery mistakes women over 40 commonly make — and what to do instead.
+A simple Next.js blog designed for Vercel.
 
-Posts are Markdown files in `content/posts`.
+## How posts work
+
+Posts live in:
+
+```text
+content/posts
+```
+
+Each post is a Markdown file with frontmatter:
+
+```md
+---
+title: "My post"
+date: "2026-06-01"
+description: "Short summary."
+tags: "tag one, tag two"
+---
+
+Post body goes here.
+```
+
+## Contact email
+
+Set this environment variable in Vercel:
+
+```text
+NEXT_PUBLIC_CONTACT_EMAIL=your@email.com
+```
+
+## Commands
+
+```bash
+npm install
+npm run dev
+npm run build
+```
