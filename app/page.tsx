@@ -25,18 +25,14 @@ export default function HomePage() {
           </p>
           <Link href="/blog" className="button">Read the latest articles</Link>
         </div>
-        <div className="hero-panel" aria-label="Fashion magazine style illustration">
-          <span>Over 40</span>
-          <strong>Style Fix</strong>
-          <em>Mistakes to avoid</em>
-        </div>
+        <img className="hero-image" src="/images/style-1.svg" alt="Editorial fashion illustration for Over 40 Style Fix" />
       </section>
 
       {featured && (
         <section className="featured-section">
           <p className="eyebrow">Featured article</p>
           <Link className="featured-card" href={`/blog/${featured.slug}`}>
-            <div className="image-placeholder">Style Fix</div>
+            <img className="featured-image" src={featured.image} alt="" />
             <div>
               <p className="meta">{featured.date}</p>
               <h2>{featured.title}</h2>
@@ -69,11 +65,14 @@ export default function HomePage() {
         </div>
         <div className="grid magazine-grid">
           {latest.map((post) => (
-            <Link className="card" href={`/blog/${post.slug}`} key={post.slug}>
-              <p className="meta">{post.date}</p>
-              <h2>{post.title}</h2>
-              <p>{post.description}</p>
-              <p className="tags">{post.tags.join(' · ')}</p>
+            <Link className="card image-card" href={`/blog/${post.slug}`} key={post.slug}>
+              <img className="card-image" src={post.image} alt="" />
+              <div className="card-body">
+                <p className="meta">{post.date}</p>
+                <h2>{post.title}</h2>
+                <p>{post.description}</p>
+                <p className="tags">{post.tags.join(' · ')}</p>
+              </div>
             </Link>
           ))}
         </div>
