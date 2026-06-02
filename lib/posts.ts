@@ -9,8 +9,22 @@ export type Post = {
   date: string;
   description: string;
   tags: string[];
+  image: string;
   content: string;
 };
+
+const fallbackImages = [
+  '/images/style-1.svg',
+  '/images/style-2.svg',
+  '/images/style-3.svg',
+  '/images/style-4.svg',
+  '/images/style-5.svg',
+];
+
+function imageForSlug(slug: string) {
+  const index = Math.abs(slug.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0)) % fallbackImages.length;
+  return fallbackImages[index];
+}
 
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
@@ -49,6 +63,7 @@ export function getAllPosts(): Post[] {
         date: metadata.date || '',
         description: metadata.description || '',
         tags: metadata.tags ? metadata.tags.split(',').map((tag) => tag.trim()) : [],
+        image: metadata.image || imageForSlug(slug),
         content,
       };
     })
